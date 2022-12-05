@@ -22,8 +22,13 @@ import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 import FeedbackContext from "../context/FeedbackContext";
 import InputBase from "@mui/material/InputBase";
+import image from "../images/alrehmanLogo.png";
+import backgroundImg from "../images/OfficialCover.jpeg";
+
 export default function Navbar({ size }) {
   const { cart, desiredProduct } = useContext(FeedbackContext);
+
+  const [find, foundText] = useState("");
   const [state, setState] = React.useState({
     left: false,
   });
@@ -83,7 +88,7 @@ export default function Navbar({ size }) {
     palette: {
       mode: "dark",
       primary: {
-        main: "#fffbed",
+        main: "#ffffff",
       },
     },
   });
@@ -127,60 +132,89 @@ export default function Navbar({ size }) {
       },
     },
   }));
+  const handleChange = (e) => {
+    foundText(e.target.value);
+  };
   return (
-    <Box sx={{ flexGrow: 1 }} theme={darkTheme}>
-      <ThemeProvider theme={darkTheme}>
-        <AppBar position="static" color="primary" enableColorOnDark>
-          <Toolbar>
-            <div>
-              {["left"].map((anchor) => (
-                <React.Fragment key={anchor}>
-                  <IconButton
-                    size="large"
-                    edge="start"
-                    color="inherit"
-                    aria-label="menu"
-                    sx={{ mr: 2 }}
-                    onClick={toggleDrawer(anchor, true)}
-                  >
-                    <MenuIcon />
-                  </IconButton>
-                  <Drawer
-                    anchor={anchor}
-                    open={state[anchor]}
-                    onClose={toggleDrawer(anchor, false)}
-                  >
-                    {list(anchor)}
-                  </Drawer>
-                </React.Fragment>
-              ))}
-            </div>
+    <div style={{ backgroundImage: `url(${backgroundImg})` }}>
+      <div style={{ background: "black" }}>
+        <img
+          src={image}
+          alt=""
+          style={{
+            width: "117px",
+            boxShadow: " 1px 3px 11px red",
+            borderRadius: " 59px",
+          }}
+        />
+      </div>
+      <Box sx={{ flexGrow: 1 }} theme={darkTheme}>
+        <ThemeProvider theme={darkTheme}>
+          <AppBar position="static" color="primary" enableColorOnDark>
+            <Toolbar>
+              <div>
+                {["left"].map((anchor) => (
+                  <React.Fragment key={anchor}>
+                    <IconButton
+                      size="large"
+                      edge="start"
+                      color="inherit"
+                      aria-label="menu"
+                      sx={{ mr: 2 }}
+                      onClick={toggleDrawer(anchor, true)}
+                    >
+                      <MenuIcon />
+                    </IconButton>
+                    <Drawer
+                      anchor={anchor}
+                      open={state[anchor]}
+                      onClose={toggleDrawer(anchor, false)}
+                    >
+                      {list(anchor)}
+                    </Drawer>
+                  </React.Fragment>
+                ))}
+              </div>
 
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Auto Care
-            </Typography>
-            <Search>
+              {/* <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                Auto Care
+              </Typography> */}
+              {/* <Search>
               <SearchIconWrapper>
                 <SearchIcon />
               </SearchIconWrapper>
               <StyledInputBase
                 placeholder="Search…"
                 inputProps={{ "aria-label": "search" }}
-                onChange={(e) => {
-                  desiredProduct(e.target.value);
+                onChange={handleChange}
+              />
+            </Search> */}
+              <input
+                type="text"
+                onChange={handleChange}
+                style={{
+                  width: 650,
+                  padding: "2px",
+                  borderRadius: "8px",
+                  // boxShadow: "-1px 0px 4px #ff1919",
+                  // border: "none",
+                  marginRight: "12px",
                 }}
               />
-            </Search>
-            <Button color="inherit" onClick={() => navigate("/")}>
-              Home
-            </Button>
-            <Button color="inherit" onClick={() => navigate("/profile")}>
-              <ShoppingBagIcon />
-              {cart.length}
-            </Button>
-          </Toolbar>
-        </AppBar>
-      </ThemeProvider>
-    </Box>
+              <Button color="inherit" onClick={() => desiredProduct(find)}>
+                <SearchIcon />
+              </Button>
+              <Button color="inherit" onClick={() => navigate("/")}>
+                Home
+              </Button>
+              <Button color="inherit" onClick={() => navigate("/profile")}>
+                <ShoppingBagIcon />
+                {cart.length}
+              </Button>
+            </Toolbar>
+          </AppBar>
+        </ThemeProvider>
+      </Box>
+    </div>
   );
 }

@@ -1,18 +1,33 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import FeedbackContext from "../context/FeedbackContext";
+import ProductDetails from "../pages/ProductDetails";
+import { useNavigate, Link } from "react-router-dom";
 
-const Cards = ({ item, handleClick }) => {
-  const { title, price, image, details, convenience } = item;
+const Cards = ({ item, handleClick, index }) => {
+  const { ProductDetails } = useContext(FeedbackContext);
+  const { title, price, image, id } = item;
+  const navigate = useNavigate();
+  useEffect(() => {}, [navigate]);
   return (
-    <div className="cards">
+    <div className="cards" key={index}>
       <div className="image_box">
-        <img src={image} alt="" />
+        {/* <Link to="/product-details?sort={id}"> */}
+        <img
+          src={image}
+          alt=""
+          onClick={() => {
+            ProductDetails(id);
+            navigate("/product-details");
+          }}
+        />
+        {/* </Link> */}
       </div>
       <div className="details">
         <p>{title}</p>
         {/* <p>{details}</p> */}
-        <p>{convenience}</p>
+        {/* <p>{convenience}</p> */}
         <p>Price - {price}Rs</p>
-        <button onClick={() => handleClick(item)}>Add to favourites</button>
+        <button onClick={() => handleClick(item)}>Add to Cart</button>
       </div>
     </div>
   );

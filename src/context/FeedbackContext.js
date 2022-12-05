@@ -4,9 +4,12 @@ const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
-
   // const [filterProduct, setfilterProduct] = useState([]);
+  const [search, setSearch] = useState("");
+  const [getID, setID] = useState();
+  // let seacrh = "Oil";
   let filteredPrduct = [];
+  // var search;
 
   const handleClick = (item) => {
     if (cart.indexOf(item) !== -1) {
@@ -24,12 +27,23 @@ export const FeedbackProvider = ({ children }) => {
     if (arr[ind].amount === 0) arr[ind].amount = 1;
     setCart([...arr]);
   };
-  const desiredProduct = (seacrh) => {
-    filteredPrduct = products.filter((item) => {
-      return seacrh === item.title;
-    });
-
-    console.log(filteredPrduct);
+  const desiredProduct = (text) => {
+    // filteredPrduct = products.filter((item) => {
+    //   return seacrh === item.title;
+    // });
+    // setSeacrh(text);
+    // search = text;
+    console.log(text);
+    setSearch(text);
+  };
+  const ProductDetails = (text) => {
+    // filteredPrduct = products.filter((item) => {
+    //   return seacrh === item.title;
+    // });
+    // setSeacrh(text);
+    // search = text;
+    console.log(text);
+    setID(text);
   };
 
   return (
@@ -40,7 +54,10 @@ export const FeedbackProvider = ({ children }) => {
         setCart,
         handleChange,
         desiredProduct,
-        filteredPrduct,
+        search,
+        setID,
+        getID,
+        ProductDetails,
       }}
     >
       {children}

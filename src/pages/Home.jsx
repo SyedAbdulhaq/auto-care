@@ -1,6 +1,9 @@
 import { Carousel } from "antd";
 import { Card } from "antd";
 import Amazon from "../components/amazon";
+import products from "../data/data";
+import { Link } from "react-router-dom";
+import backgroundImg from "../images/OfficialCover.jpeg";
 
 const { Meta } = Card;
 const contentStyle = {
@@ -9,24 +12,22 @@ const contentStyle = {
   lineHeight: "160px",
   textAlign: "center",
   background: "#364d79",
+  width: "100%",
 };
 export default function Home() {
   return (
-    <div>
+    <div style={{ backgroundImage: "url(../images/OfficialCover.jpeg)" }}>
       <div className="img-slider">
         <Carousel autoplay>
-          <div>
-            <h3 style={contentStyle}>1</h3>
-          </div>
-          <div>
-            <h3 style={contentStyle}>2</h3>
-          </div>
-          <div>
-            <h3 style={contentStyle}>3</h3>
-          </div>
-          <div>
-            <h3 style={contentStyle}>4</h3>
-          </div>
+          {products.slice(0, 3).map((item) => {
+            return (
+              <Link to={item.path}>
+                <div>
+                  <img src={item.image} alt="" style={contentStyle} />
+                </div>
+              </Link>
+            );
+          })}
         </Carousel>
       </div>
       <div className="cards">

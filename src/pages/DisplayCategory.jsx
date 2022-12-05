@@ -1,30 +1,26 @@
 import React, { useState, useContext } from "react";
 import products from "../data/data";
-import Cards from "./card";
+import Cards from "../components/card";
 import "../styles/amazon.css";
 import FeedbackContext from "../context/FeedbackContext";
-const Amazon = () => {
-  const { handleClick, search } = useContext(FeedbackContext);
+const DisplayCategory = ({ category }) => {
+  const { handleClick } = useContext(FeedbackContext);
 
   return (
     <div>
       <section>
         {products
           .filter((post) => {
-            if (search === "" || search === undefined) {
-              return post;
-            } else if (
-              post.title.toLowerCase().includes(search.toLowerCase())
-            ) {
+            if (post.title.includes(category)) {
               return post;
             }
           })
           .map((post, index) => (
             <Cards
-              key={post.id}
+              key={index}
               item={post}
               handleClick={handleClick}
-              index={index}
+              index={post.id}
             />
             // <p>{post.title}</p>
           ))}
@@ -33,4 +29,4 @@ const Amazon = () => {
   );
 };
 
-export default Amazon;
+export default DisplayCategory;

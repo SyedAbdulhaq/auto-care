@@ -14,10 +14,9 @@ import PrivateRoute from "./Profile/PrivateRoute";
 import Profile from "./Profile/Profile";
 import Navbar from "./pages/Navbar";
 import Footer from "./pages/Footer";
-import React, { useState } from "react";
 import { FeedbackProvider } from "./context/FeedbackContext";
+import ProductDetails from "./pages/ProductDetails";
 function App() {
-  // const [cartSize, setCartSize] = useState(0);
   return (
     <>
       <FeedbackProvider>
@@ -36,6 +35,7 @@ function App() {
             <Route path="/engine-oil" element={<EngineOil />} />
             <Route path="/oil-filter" element={<OilFilter />} />
             <Route path="/spark-plug" element={<SparkPlug />} />
+            <Route path="/product-details" element={<ProductDetails />} />
           </Routes>
           <Footer />
         </Router>

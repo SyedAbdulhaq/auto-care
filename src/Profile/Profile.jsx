@@ -31,7 +31,7 @@ const Profile = () => {
       {cart.map((item) => (
         <div className="cart_box" key={item.id}>
           <div className="cart_img">
-            <img src={item.img} alt="" />
+            <img src={item.image} alt="" />
             <p>{item.title}</p>
             {/* <p>{item.Accomodation}</p>
             <p>{item.convenience}</p> */}
