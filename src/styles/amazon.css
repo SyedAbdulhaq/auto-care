@@ -1,47 +1,70 @@
 * {
-    margin: 0;
-    padding: 0;
-  }
-  section {
-    width: 80%;
-    margin: auto;
-    margin-top: 5%;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
-  }
-  .cards {
-    width: 250px;
-    padding: 20px;
-  }
-  .cards:hover {
-    box-shadow: 0 10px 10px 10px rbga(0, 0, 0, 0.1);
-    cursor: pointer;
-  }
-  .image_box img {
-    width: 150px;
-    height: 200px;
-  }
-  
-  .image_box img {
-    width: 150px;
-    height: 200px;
-  }
-  .details p:nth-child(1) {
-    font-weight: bold;
-  }
-  .details p:nth-child(2) {
-    color: grey;
-    font-size: 0.8rem;
-  }
-  .details p:nth-child(3) {
-    font-weight: bolx;
-    color: grey;
-  }
-  .details button {
-    padding: 5px 10px;
-    border: none;
-    font-weight: bold;
-    background-color: skyblue;
-    outline: none;
-  }
+  margin: 0;
+  padding: 0;
+}
+section {
+  width: 100%;
+  /* margin: auto; */
+
+  margin-top: 5%;
+  /* display: flex;
+  justify-content: space-between  ;
+  align-items: center;
+  flex-wrap: wrap; */
+  /* margin: auto; */
+  /* grid-template-columns: repeat(3, 1fr); */
+  /* grid-template-rows: auto; */
+}
+.cards {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  /* margin-left: 10px; */
+  /* width: 50px;
+  padding: 20px; */
+}
+.cards:hover {
+  box-shadow: 0 10px 10px 10px rbga(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+/* .image_box img {
+  width: 150px;
+  height: 200px;
+} */
+
+.image_box img {
+  width: 150px;
+  height: 200px;
+}
+.details p:nth-child(1) {
+  font-weight: bold;
+}
+.details p:nth-child(2) {
+  color: grey;
+  font-size: 0.8rem;
+}
+/* .details p:nth-child(3) {
+  font-weight: bolx;
+  color: grey;
+} */
+.details button {
+  padding: 5px 10px;
+  border: none;
+  font-weight: bold;
+  background-color: skyblue;
+  outline: none;
+}
+.card-img-top {
+  border-top-left-radius: var(--bs-card-inner-border-radius);
+  border-top-right-radius: var(--bs-card-inner-border-radius);
+  /* width: 250px; */
+  height: 20vh;
+}
+:where(.css-dev-only-do-not-override-1s3dcof).ant-layout .ant-layout-footer {
+  padding: 24px 50px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 14px;
+  background: #bb2d3b;
+}

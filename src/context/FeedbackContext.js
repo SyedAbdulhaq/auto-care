@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import products from "../data/data";
+import { toast } from "react-toastify";
 const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
@@ -7,12 +7,19 @@ export const FeedbackProvider = ({ children }) => {
   // const [filterProduct, setfilterProduct] = useState([]);
   const [search, setSearch] = useState("");
   const [getID, setID] = useState();
-  // let seacrh = "Oil";
-  let filteredPrduct = [];
-  // var search;
 
   const handleClick = (item) => {
     if (cart.indexOf(item) !== -1) {
+      toast.error("Product already exist in cart");
+      return;
+    } else {
+      setCart([...cart, item]);
+    }
+  };
+
+  const handleClickDetails = (item) => {
+    if (cart.indexOf(item) !== -1) {
+      toast.error("Product already exist in your cart");
       return;
     } else {
       setCart([...cart, item]);
@@ -33,7 +40,7 @@ export const FeedbackProvider = ({ children }) => {
     // });
     // setSeacrh(text);
     // search = text;
-    console.log(text);
+    // console.log(text);
     setSearch(text);
   };
   const ProductDetails = (text) => {
@@ -42,7 +49,7 @@ export const FeedbackProvider = ({ children }) => {
     // });
     // setSeacrh(text);
     // search = text;
-    console.log(text);
+    // console.log(text);
     setID(text);
   };
 
@@ -58,6 +65,7 @@ export const FeedbackProvider = ({ children }) => {
         setID,
         getID,
         ProductDetails,
+        handleClickDetails,
       }}
     >
       {children}

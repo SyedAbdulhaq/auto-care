@@ -1,9 +1,11 @@
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+
 import Accessories from "./category/Accessories";
 import AirFilter from "./category/AirFilter";
 import BrakePads from "./category/BrakePads";
@@ -16,6 +18,11 @@ import Navbar from "./pages/Navbar";
 import Footer from "./pages/Footer";
 import { FeedbackProvider } from "./context/FeedbackContext";
 import ProductDetails from "./pages/ProductDetails";
+import "bootstrap/dist/css/bootstrap.min.css";
+import CheckOut from "./pages/CheckOut";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+
 function App() {
   return (
     <>
@@ -29,6 +36,9 @@ function App() {
             </Route>
             <Route path="/sign-in" element={<SignIn />} />
             <Route path="/sign-up" element={<SignUp />} />
+            <Route path="/cart" element={<CheckOut />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/accessories" element={<Accessories />} />
             <Route path="/air-filter" element={<AirFilter />} />
             <Route path="/brake-pads" element={<BrakePads />} />

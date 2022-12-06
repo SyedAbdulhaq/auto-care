@@ -19,9 +19,9 @@ export default function Home() {
     <div style={{ backgroundImage: "url(../images/OfficialCover.jpeg)" }}>
       <div className="img-slider">
         <Carousel autoplay>
-          {products.slice(0, 3).map((item) => {
+          {products.slice(0, 3).map((item, index) => {
             return (
-              <Link to={item.path}>
+              <Link to={item.path} key={index}>
                 <div>
                   <img src={item.image} alt="" style={contentStyle} />
                 </div>

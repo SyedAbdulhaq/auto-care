@@ -59,7 +59,7 @@ button {
 
 .primaryButton {
   cursor: pointer;
-  background: #00cc66;
+  background: #000000;
   border-radius: 1rem;
   padding: 0.85rem 2rem;
   color: #ffffff;
@@ -214,7 +214,7 @@ button {
 
 .forgotPasswordLink {
   cursor: pointer;
-  color: #00cc66;
+  color: #000000;
   font-weight: 600;
   text-align: right;
 }
@@ -254,7 +254,7 @@ button {
   align-items: center;
   width: 3rem;
   height: 3rem;
-  background-color: #00cc66;
+  background-color: #000000;
   border-radius: 50%;
 }
 @media (min-width: 1024px) {
@@ -291,7 +291,7 @@ button {
 
 .registerLink {
   margin-top: 4rem;
-  color: #00cc66;
+  color: #050505;
   font-weight: 600;
   text-align: center;
   margin-bottom: 3rem;

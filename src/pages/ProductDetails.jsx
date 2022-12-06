@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import FeedbackContext from "../context/FeedbackContext";
+import Button from "react-bootstrap/Button";
 import products from "../data/data";
 import { useNavigate } from "react-router-dom";
+import Card from "react-bootstrap/Card";
+
 export default function ProductDetails({ item }) {
   // const { title, price, image, details, ProductName } = item;
-  const { handleClick, getID, setID } = useContext(FeedbackContext);
+  const { handleClickDetails, getID, setID } = useContext(FeedbackContext);
   const navigate = useNavigate();
   return (
     <div>
@@ -26,8 +29,9 @@ export default function ProductDetails({ item }) {
             {/* <div className='MainDiva'> */}
             <div class="container">
               <div class="row">
-                <div class="col-4">
-                  <img src={post.image} alt=""></img>
+                <div class="col-8">
+                  {/* <img src={post.image} alt=""></img> */}
+                  <Card.Img variant="top" src={post.image} />
                 </div>
 
                 <div class="col-8">
@@ -51,9 +55,12 @@ export default function ProductDetails({ item }) {
                         <br />
                         <br />
                         <br />
-                        <button variant="primary" onClick={handleClick}>
+                        <Button
+                          variant="danger"
+                          onClick={() => handleClickDetails(post)}
+                        >
                           Add to Cart
-                        </button>
+                        </Button>
                       </p>
                     </div>
                     <div class="card-footer text-muted">Seller: {"abc"}</div>

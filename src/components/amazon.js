@@ -8,7 +8,7 @@ const Amazon = () => {
 
   return (
     <div>
-      <section>
+      <section class="row">
         {products
           .filter((post) => {
             if (search === "" || search === undefined) {
@@ -21,10 +21,10 @@ const Amazon = () => {
           })
           .map((post, index) => (
             <Cards
-              key={post.id}
+              key={index}
               item={post}
               handleClick={handleClick}
-              index={index}
+              index={index + 1}
             />
             // <p>{post.title}</p>
           ))}

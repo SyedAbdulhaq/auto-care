@@ -33,7 +33,6 @@ export default function Navbar({ size }) {
     left: false,
   });
   const navigate = useNavigate();
-  const location = useLocation();
   const toggleDrawer = (anchor, open) => (event) => {
     if (
       event.type === "keydown" &&
@@ -61,7 +60,7 @@ export default function Navbar({ size }) {
           { name: "OIL FILTER", path: "/oil-filter" },
           { name: "SPARK PLUG", path: "/spark-plug" },
         ].map((text, index) => (
-          <ListItem key={text} disablePadding>
+          <ListItem key={index} disablePadding>
             <ListItemButton onClick={() => navigate(text.path)}>
               <ListItemText primary={text.name} />
             </ListItemButton>
@@ -92,46 +91,7 @@ export default function Navbar({ size }) {
       },
     },
   });
-  // search
-  const Search = styled("div")(({ theme }) => ({
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto",
-    },
-  }));
 
-  const SearchIconWrapper = styled("div")(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  }));
-
-  const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: "inherit",
-    "& .MuiInputBase-input": {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create("width"),
-      width: "100%",
-      [theme.breakpoints.up("md")]: {
-        width: "20ch",
-      },
-    },
-  }));
   const handleChange = (e) => {
     foundText(e.target.value);
   };
@@ -148,7 +108,7 @@ export default function Navbar({ size }) {
           }}
         />
       </div>
-      <Box sx={{ flexGrow: 1 }} theme={darkTheme}>
+      <Box sx={{ flexGrow: 1, display: "flex" }} theme={darkTheme}>
         <ThemeProvider theme={darkTheme}>
           <AppBar position="static" color="primary" enableColorOnDark>
             <Toolbar>
@@ -207,7 +167,7 @@ export default function Navbar({ size }) {
               <Button color="inherit" onClick={() => navigate("/")}>
                 Home
               </Button>
-              <Button color="inherit" onClick={() => navigate("/profile")}>
+              <Button color="inherit" onClick={() => navigate("/cart")}>
                 <ShoppingBagIcon />
                 {cart.length}
               </Button>
