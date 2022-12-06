@@ -22,6 +22,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import CheckOut from "./pages/CheckOut";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import TabsDisplay from "./pages/TabsDisplay";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
             <Route path="/spark-plug" element={<SparkPlug />} />
             <Route path="/product-details" element={<ProductDetails />} />
           </Routes>
+          <TabsDisplay />
           <Footer />
         </Router>
         <ToastContainer />
