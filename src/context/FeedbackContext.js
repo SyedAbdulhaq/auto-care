@@ -7,6 +7,15 @@ export const FeedbackProvider = ({ children }) => {
   // const [filterProduct, setfilterProduct] = useState([]);
   const [search, setSearch] = useState("");
   const [getID, setID] = useState();
+  const [login, setLogin] = useState(false);
+
+  const [users, setUser] = useState([
+    { name: "John", email: "user1@gmail.com", password: "123456" },
+    { name: "Pete", email: "user2@gmail.com", password: "123456" },
+    { name: "Mary", email: "user3@gmail.com", password: "123456" },
+  ]);
+
+  useEffect(() => {}, [users]);
 
   const handleClick = (item) => {
     if (cart.indexOf(item) !== -1) {
@@ -53,6 +62,31 @@ export const FeedbackProvider = ({ children }) => {
     setID(text);
   };
 
+  const getUserInfo = (info) => {
+    console.log("here", info);
+    setUser((prevState) => [
+      ...prevState,
+      {
+        name: info.name,
+        email: info.email,
+        password: info.password,
+      },
+    ]);
+    setLogin(true);
+  };
+
+  const loginStatus = () => {
+    setLogin(true);
+  };
+
+  const updatePass = (pass, em) => {
+    users.forEach((item, index) => {
+      if (item.email === em) {
+        item.password = pass;
+      }
+    });
+  };
+
   return (
     <FeedbackContext.Provider
       value={{
@@ -66,6 +100,12 @@ export const FeedbackProvider = ({ children }) => {
         getID,
         ProductDetails,
         handleClickDetails,
+        setUser,
+        users,
+        getUserInfo,
+        loginStatus,
+        login,
+        updatePass,
       }}
     >
       {children}

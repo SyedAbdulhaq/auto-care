@@ -1,13 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Link, useNavigate } from "react-router-dom";
-
+import FeedbackContext from "../context/FeedbackContext";
 import { ReactComponent as ArrowRightIcon } from "../assets/svg/keyboardArrowRightIcon.svg";
 import visibilityIcon from "../assets/svg/visibilityIcon.svg";
 
 function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
+  const { users, loginStatus } = useContext(FeedbackContext);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -25,7 +26,18 @@ function SignIn() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-
+    console.log("all users: ", users);
+    const user = await users.find(
+      (user) => user.email === email && user.password === password
+    );
+    if (user) {
+      // login success
+      loginStatus();
+      navigate("/");
+    } else {
+      // login failed
+      toast.error("Bad User Credentials");
+    }
     //   try {
     //     const auth = getAuth();
 

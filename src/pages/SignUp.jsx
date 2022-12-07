@@ -1,12 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import FeedbackContext from "../context/FeedbackContext";
 import { toast } from "react-toastify";
 import { ReactComponent as ArrowRightIcon } from "../assets/svg/keyboardArrowRightIcon.svg";
 import visibilityIcon from "../assets/svg/visibilityIcon.svg";
 
 function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
+  const { users, loginStatus, getUserInfo } = useContext(FeedbackContext);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,6 +26,7 @@ function SignUp() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    console.log(formData);
 
     // try {
     //   // register user (given in docs of firebase auth)
@@ -53,6 +55,20 @@ function SignUp() {
     // } catch (error) {
     //   toast.error("Something went wrong with registration");
     // }
+    let numberOfUsers = users.length;
+    users.forEach((element) => {
+      if (email !== element.email) {
+        getUserInfo(formData);
+        console.log("all users: ", users);
+        loginStatus();
+        navigate("/");
+      }
+    });
+    if (numberOfUsers < users.length) {
+      return;
+    } else {
+      toast.error("User all ready exists");
+    }
   };
   return (
     <>

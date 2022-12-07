@@ -20,7 +20,9 @@ const CheckOut = () => {
     cart.map((item) => (ans += item.amount * item.price));
     setPrice(ans);
   };
+  // const checkOutItems =()=>{
 
+  // }
   useEffect(() => {
     handlePrice();
   });

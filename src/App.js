@@ -23,6 +23,7 @@ import CheckOut from "./pages/CheckOut";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import TabsDisplay from "./pages/TabsDisplay";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
             <Route path="/oil-filter" element={<OilFilter />} />
             <Route path="/spark-plug" element={<SparkPlug />} />
             <Route path="/product-details" element={<ProductDetails />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
           </Routes>
           <TabsDisplay />
           <Footer />
