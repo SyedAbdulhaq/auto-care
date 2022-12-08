@@ -151,23 +151,28 @@ export default function Navbar({ size }) {
             </Search> */}
               <input
                 type="text"
+                className="navbar-search"
                 onChange={handleChange}
-                style={{
-                  width: 650,
-                  padding: "2px",
-                  borderRadius: "8px",
-                  // boxShadow: "-1px 0px 4px #ff1919",
-                  // border: "none",
-                  marginRight: "12px",
-                }}
               />
-              <Button color="inherit" onClick={() => desiredProduct(find)}>
-                <SearchIcon />
+              <Button
+                className="navbar-Icon"
+                color="inherit"
+                onClick={() => desiredProduct(find)}
+              >
+                <SearchIcon className="navbar-search-btn" />
               </Button>
-              <Button color="inherit" onClick={() => navigate("/")}>
+              <Button
+                className="navbar-Icon"
+                color="inherit"
+                onClick={() => navigate("/")}
+              >
                 Home
               </Button>
-              <Button color="inherit" onClick={() => navigate("/cart")}>
+              <Button
+                className="navbar-Icon"
+                color="inherit"
+                onClick={() => navigate("/cart")}
+              >
                 <ShoppingBagIcon />
                 {cart.length}
               </Button>
