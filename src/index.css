@@ -28,6 +28,7 @@ button {
 .input,
 .passwordInput,
 .emailInput,
+.billingDetails,
 .nameInput,
 .textarea {
   box-shadow: rgba(0, 0, 0, 0.11);
@@ -45,6 +46,7 @@ button {
   .input,
   .passwordInput,
   .emailInput,
+  .billingDetails,
   .nameInput,
   .textarea {
     padding: 0 5rem;
@@ -193,6 +195,10 @@ button {
 .emailInput {
   margin-bottom: 2rem;
   background: url("./assets/svg/personIcon.svg") #ffffff 2.5% center no-repeat;
+}
+.billingDetails {
+  margin-bottom: 2rem;
+  /* background: url("./assets/svg/personIcon.svg") #ffffff 2.5% center no-repeat; */
 }
 
 .passwordInputDiv {
