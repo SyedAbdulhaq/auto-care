@@ -32,7 +32,7 @@ function SignIn() {
     );
     if (user) {
       // login success
-      loginStatus();
+      loginStatus(true);
       navigate("/");
     } else {
       // login failed

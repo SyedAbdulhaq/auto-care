@@ -75,8 +75,11 @@ export const FeedbackProvider = ({ children }) => {
     setLogin(true);
   };
 
-  const loginStatus = () => {
-    setLogin(true);
+  const loginStatus = (login) => {
+    setLogin(login);
+    if (login === false) {
+      setCart([]);
+    }
   };
 
   const updatePass = (pass, em) => {

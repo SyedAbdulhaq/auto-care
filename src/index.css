@@ -632,7 +632,7 @@ button {
   font-size: 1rem;
   font-weight: 600;
   color: #ffffff;
-  background-color: #00cc66;
+  background-color: #000000;
   padding: 0.25rem 0.75rem;
   border-radius: 1rem;
 }
@@ -1150,6 +1150,18 @@ body {
   padding: 2px;
   border-radius: 8px;
 }
+.logOut-display {
+  position: absolute;
+  left: 93vw;
+}
+.navbar-Icon-display {
+  position: absolute;
+  left: 88vw;
+}
+.home-Icon-display {
+  position: absolute;
+  left: 83.5vw;
+}
 
 /* Responsive */
 
@@ -1185,7 +1197,7 @@ body {
   }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 539px) {
   .navbar-Icon {
     min-width: 10px !important;
     font-size: -0.125rem !important;
@@ -1193,9 +1205,25 @@ body {
   .navbar-search {
     padding: -1px;
     width: 200px;
-    font-size: 10px;
+    font-size: 0.5rem;
   }
   .navbar-search-btn {
     width: 20px !important;
+  }
+  .logOut {
+    font-size: 0.58rem;
+    padding: 0.15rem 0.25rem;
+  }
+  .logOut-display {
+    position: inherit;
+    left: 0px;
+  }
+}
+@media screen and (max-width: 1233px) {
+  .navbar-Icon-display,
+  .home-Icon-display,
+  .logOut-display {
+    position: inherit;
+    left: 0px;
   }
 }

@@ -26,7 +26,8 @@ import image from "../images/alrehmanLogo.png";
 import backgroundImg from "../images/OfficialCover.jpeg";
 
 export default function Navbar({ size }) {
-  const { cart, desiredProduct } = useContext(FeedbackContext);
+  const { cart, desiredProduct, loginStatus, login } =
+    useContext(FeedbackContext);
 
   const [find, foundText] = useState("");
   const [state, setState] = React.useState({
@@ -91,6 +92,10 @@ export default function Navbar({ size }) {
       },
     },
   });
+  const onLogout = () => {
+    loginStatus(false);
+    navigate("/");
+  };
 
   const handleChange = (e) => {
     foundText(e.target.value);
@@ -161,21 +166,33 @@ export default function Navbar({ size }) {
               >
                 <SearchIcon className="navbar-search-btn" />
               </Button>
-              <Button
-                className="navbar-Icon"
-                color="inherit"
-                onClick={() => navigate("/")}
-              >
-                Home
-              </Button>
-              <Button
-                className="navbar-Icon"
-                color="inherit"
-                onClick={() => navigate("/cart")}
-              >
-                <ShoppingBagIcon />
-                {cart.length}
-              </Button>
+
+              <div className="home-Icon-display">
+                <Button
+                  className="navbar-Icon"
+                  color="inherit"
+                  onClick={() => navigate("/")}
+                >
+                  Home
+                </Button>
+              </div>
+              <div className="navbar-Icon-display">
+                <Button
+                  className="navbar-Icon"
+                  color="inherit"
+                  onClick={() => navigate("/cart")}
+                >
+                  <ShoppingBagIcon />
+                  {cart.length}
+                </Button>
+              </div>
+              {login && (
+                <div className="logOut-display">
+                  <button className="logOut" type="button" onClick={onLogout}>
+                    Logout
+                  </button>
+                </div>
+              )}
             </Toolbar>
           </AppBar>
         </ThemeProvider>
